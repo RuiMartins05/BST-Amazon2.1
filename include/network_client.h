@@ -2,7 +2,7 @@
 #define _NETWORK_CLIENT_H
 
 #include "../include/client_stub.h"
-#include "sdmessage.pb-c.h"
+#include "../source/sdmessage.pb-c.h"
 
 /* Esta função deve:
  * - Obter o enrdeeço do servidor (struct sockaddr_in) a base da

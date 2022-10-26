@@ -6,8 +6,8 @@
 #include "../include/entry.h"
 #include "../include/client_stub-private.h"
 #include "../include/network_client.h"
-#include "../include/sdmessage.pb-c.h"
-#include "../include/sdmessage.pb-c.h"
+#include "sdmessage.pb-c.h"
+#include "sdmessage.pb-c.h"
 
 #include <sys/socket.h>
 #include <arpa/inet.h>

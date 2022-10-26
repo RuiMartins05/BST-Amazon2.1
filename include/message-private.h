@@ -2,7 +2,7 @@
 #define _MESSAGE_PRIVATE_H
 
 
-#include "sdmessage.pb-c.h"
+#include "../source/sdmessage.pb-c.h"
 #include <netinet/in.h>
 
 int write_all(int sock, char *buf, int len);

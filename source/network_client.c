@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../include/client_stub.h"
 #include "../include/client_stub-private.h"
 #include"../include/message-private.h"
 
-// #include "sdmessage.pb-c.h"
+#include "sdmessage.pb-c.h"
 
 /* Esta função deve:
  * - Obter o enrdeeço do servidor (struct sockaddr_in) a base da
@@ -67,7 +68,7 @@ struct MessageT *network_send_receive(struct rtree_t * rtree, struct MessageT *m
 
     message_t__pack(msg, buff);
 
-    if(write_all(descriptor, &sizeRead, sizeof(int)) <= 0){
+    if(write_all(descriptor, buff, sizeof(int)) <= 0){
         printf("write_all(descriptor, &sizeRead, sizeof(int)) < 0");
         free(buff);
         return NULL;
@@ -79,7 +80,7 @@ struct MessageT *network_send_receive(struct rtree_t * rtree, struct MessageT *m
         return NULL;
     }
 
-    if (read_all(descriptor, &sizeRead, sizeof(int)) <= 0) {
+    if (read_all(descriptor, buff, sizeof(int)) <= 0) {
         printf("Erro network_receive() - Erro ao receber dados do cliente");
         free(buff);
         close(descriptor);

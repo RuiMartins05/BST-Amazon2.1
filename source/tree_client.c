@@ -95,14 +95,14 @@ int main(int argc, char *argv[]) {
 
         } else if (strcmp(action, "getkeys")) {
 
-            char** keysRes = rtree_get_keys(remoteTree);
+            // char** keysRes = rtree_get_keys(remoteTree);
 
-            if (keysRes != NULL) {
-                printf("Keys obtidas com sucesso\n");
-                printf("Keys: \n %s\n", keysRes[0]);
-            } else {
-                printf("Keys nao obtidas com sucesso\n");
-            }
+            // if (keysRes != NULL) {
+            //     printf("Keys obtidas com sucesso\n");
+            //     printf("Keys: \n %s\n", keysRes[0]);
+            // } else {
+            //     printf("Keys nao obtidas com sucesso\n");
+            // }
             
         } else if (strcmp(action, "getvalues")) {
 
