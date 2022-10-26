@@ -2,6 +2,8 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include "../include/tree_skel.h"
+#include "sdmessage.pb-c.h"
+#include "../include/network_server.h"
 
 int sockfd;
 struct sockaddr_in serverSocket;
@@ -31,7 +33,7 @@ int network_server_init(short port) {
 
     // listen marks the socket as a passive one that is waiting to accept a incoming connection
     if (listen(sockfd, 0) < 0) {
-        print("ERRO network_server_init() : Erro no listen");
+        printf("ERRO network_server_init() : Erro no listen");
         close(sockfd);
         return -1;
     };
@@ -79,7 +81,7 @@ int network_main_loop(int listening_socket) {
  * - De-serializar estes bytes e construir a mensagem com o pedido,
  *   reservando a memória necessária para a estrutura message_t.
  */
-struct MessageT *network_receive(int client_socket) {
+MessageT *network_receive(int client_socket) {
 
     int sizeRead;
     char* buffer = malloc(sizeRead);
@@ -114,7 +116,7 @@ struct MessageT *network_receive(int client_socket) {
  * - Libertar a memória ocupada por esta mensagem;
  * - Enviar a mensagem serializada, através do client_socket.
  */
-int network_send(int client_socket, struct MessageT *msg) {
+int network_send(int client_socket, MessageT *msg) {
 
     int sizeRead = message_t__get_packed_size(msg);
     char* buffer = malloc(sizeRead);

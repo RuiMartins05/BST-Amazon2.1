@@ -1,4 +1,4 @@
-#include "../include/sdmessage.pb-c.h"
+#include "sdmessage.pb-c.h"
 #include "../include/tree.h"
 
 struct tree_t *tree;

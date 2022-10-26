@@ -1,5 +1,5 @@
 #include "../include/message-private.h"
-#include "../include/sdmessage.pb-c.h"
+#include "sdmessage.pb-c.h"
 #include <netinet/in.h>
 #include <errno.h>
 

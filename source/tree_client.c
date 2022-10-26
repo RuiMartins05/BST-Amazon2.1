@@ -4,6 +4,7 @@
 #include "../include/client_stub.h"
 #include "../include/client_stub-private.h"
 #include "../include/entry.h"
+#include "../include/data.h"
 
 struct rtree_t* remoteTree;
 
