@@ -8,6 +8,10 @@ struct rtree_t* remoteTree;
 
 int main(int argc, char *argv[]) {
 
+    if(argc != 2) {
+        printf("Sintaxe do comando de execução errada. Forma correta: ./tree_client <server>:<port>");
+        return -1;
+    }
     printf("------CLIENT INTERFACE------\n");
     
     printf("Available Actions\n");
@@ -23,12 +27,10 @@ int main(int argc, char *argv[]) {
 
     if (remoteTree == NULL)
         return NULL;
-    
-    int result = 0;
 
     char line[150];
 
-    while (result == 0) {
+    while (1) {
 
         fgets(line, 150, stdin);
 
@@ -49,7 +51,7 @@ int main(int argc, char *argv[]) {
         } else if (strcmp(action, "getkeys")) {
             
         } else if (strcmp(action, "quit")) {
-            result = -1;
+            // result = -1;
         }
     }
 
