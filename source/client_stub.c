@@ -1,28 +1,27 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "../include/data.h"
 #include "../include/entry.h"
 #include "../include/client_stub-private.h"
 #include "../include/network_client.h"
 #include "../include/sdmessage.pb-c.h"
-
 #include "../include/sdmessage.pb-c.h"
 
 #include <sys/socket.h>
-#include <netinet/in.h>
+#include <arpa/inet.h>
 
-struct rtree_t* remoteTree;
 /* Função para estabelecer uma associação entre o cliente e o servidor, 
  * em que address_port é uma string no formato <hostname>:<port>.
  * Retorna NULL em caso de erro.
  */
 struct rtree_t *rtree_connect(const char *address_port) {
 
-    char* hostname = strtok(address_port, ":"); //meter cast em adress_port
+    char* hostname = strtok((char *) address_port, ":");
     int port = atoi(strtok(NULL, ":"));
 
-    remoteTree = (struct rtree_t *) malloc (sizeof(struct rtree_t));
+    struct rtree_t *remoteTree = (struct rtree_t *) malloc (sizeof(struct rtree_t));
 
     if (remoteTree == NULL) {
         printf("remote tree == NULL");
@@ -68,7 +67,6 @@ int rtree_disconnect(struct rtree_t *rtree) {
         return -1;
     }
 
-    free(rtree->socket);
     free(rtree);
 
     return 0;
@@ -186,7 +184,7 @@ int rtree_del(struct rtree_t *rtree, char *key){
  */
 int rtree_size(struct rtree_t *rtree) {
 
-    struct _MessageT msg;
+    MessageT msg;
     message_t__init(&msg);
 
     msg.opcode = MESSAGE_T__OPCODE__OP_SIZE; 
@@ -212,7 +210,7 @@ int rtree_size(struct rtree_t *rtree) {
  */
 int rtree_height(struct rtree_t *rtree) {
 
-    struct _MessageT msg;
+    MessageT msg;
     message_t__init(&msg);
 
     msg.opcode = MESSAGE_T__OPCODE__OP_HEIGHT; 

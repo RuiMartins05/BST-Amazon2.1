@@ -16,9 +16,10 @@
  */
 int network_connect(struct rtree_t *rtree) {
 
-    if(rtree == NULL)
+    if(rtree == NULL) {
         printf("rtree == NULL");
-        return NULL;
+        return -1;
+    }
 
     rtree->descriptor = socket(AF_INET, SOCK_STREAM, 0);
     if (rtree->descriptor == -1) {
@@ -94,12 +95,12 @@ struct MessageT *network_send_receive(struct rtree_t * rtree, struct MessageT *m
         return NULL;
     }
 
-    message_t__unpack(NULL, sizeRead, buff);
+    MessageT *retMsg = message_t__unpack(NULL, sizeRead, buff);
 
-    message_t__free_unpacked(msg, NULL);
+    // message_t__free_unpacked(msg, NULL);
     free(buff);
 
-    return NULL; //return unpack value
+    return retMsg;
 
 }
 

@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
             
             res = rtree_size(remoteTree);
             if (res >= 0)
-                printf("Tamanho da árvore %s\n", res);
+                printf("Tamanho da árvore %d\n", res);
             else
                 printf("Tamanho da árvore negativo\n");
 
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
 
             res = rtree_height(remoteTree);
             if (res >= 0)
-                printf("Altura da árvore %s\n", res);
+                printf("Altura da árvore %d\n", res);
             else
                 printf("Altura da árvore negativo\n");
 
@@ -84,7 +84,8 @@ int main(int argc, char *argv[]) {
             key = strtok(NULL, " ");
             data = strtok(NULL, "\n");
 
-            struct entry_t *entryToPut = entry_create(key, data);
+            struct data_t *dataC = data_create2(strlen(data) + 1, strdup(data));
+            struct entry_t *entryToPut = entry_create(strdup(key), dataC);
             res = rtree_put(remoteTree, entryToPut);
 
             if (res == 0)
@@ -105,14 +106,14 @@ int main(int argc, char *argv[]) {
             
         } else if (strcmp(action, "getvalues")) {
 
-            char** valuesRes = rtree_get_values(remoteTree);
+            // char** valuesRes = rtree_get_values(remoteTree);
 
-            if (valuesRes != NULL) {
-                printf("Values obtidos com sucesso\n");
-                printf("Values: \n %s\n", valuesRes[0]);
-            } else {
-                printf("Values nao obtidos com sucesso\n");
-            }
+            // if (valuesRes != NULL) {
+            //     printf("Values obtidos com sucesso\n");
+            //     printf("Values: \n %s\n", valuesRes[0]);
+            // } else {
+            //     printf("Values nao obtidos com sucesso\n");
+            // }
 
         } else if (strcmp(action, "quit")) {
             rtree_disconnect(remoteTree);

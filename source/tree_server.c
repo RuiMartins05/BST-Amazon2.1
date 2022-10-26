@@ -2,8 +2,6 @@
 #include <string.h>
 #include <../include/network_server.h>
 
-#include <netinet/in.h> 
-
 int main(int argc, char *argv[]) {
 
     if (argc != 2) {
