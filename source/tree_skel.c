@@ -126,7 +126,16 @@ int invoke(struct _MessageT *msg){
         }
 
     } else if (msg->opcode == MESSAGE_T__OPCODE__OP_GETKEYS){
-        //TO DO
+        if (msg->c_type == MESSAGE_T__C_TYPE__CT_NONE) {
+            msg->opcode = MESSAGE_T__OPCODE__OP_GETKEYS + 1;
+            msg->c_type = MESSAGE_T__C_TYPE__CT_KEYS;
+            msg->n_data = tree_size(tree);
+            msg->data = tree_get_keys(tree);
+
+            if(msg->n_data > 0) {
+                //TODO
+            }
+        }
         return 0;
 
     } else if (msg->opcode == MESSAGE_T__OPCODE__OP_GETVALUES){
