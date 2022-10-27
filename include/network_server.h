@@ -2,7 +2,7 @@
 #define _NETWORK_SERVER_H
 
 #include "tree_skel.h"
-#include "../source/sdmessage.pb-c.h"
+#include "../sdmessage.pb-c.h"
 
 /* Função para preparar uma socket de receção de pedidos de ligação
  * num determinado porto.

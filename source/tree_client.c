@@ -11,7 +11,7 @@ struct rtree_t* remoteTree;
 int main(int argc, char *argv[]) {
 
     if(argc != 2) {
-        printf("Sintaxe do comando de execução errada. Forma correta: ./tree_client <server>:<port>");
+        printf("Sintaxe do comando de execução errada. Forma correta: ./tree_client <server>:<port>\n");
         return -1;
     }
     printf("------CLIENT INTERFACE------\n");
