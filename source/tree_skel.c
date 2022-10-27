@@ -1,5 +1,6 @@
-#include "sdmessage.pb-c.h"
+#include "../sdmessage.pb-c.h"
 #include "../include/tree.h"
+#include "../include/tree_skel.h"
 
 struct tree_t *tree;
 

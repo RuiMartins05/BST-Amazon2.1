@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <../include/network_server.h>
+#include "../include/network_server.h"
 
 int main(int argc, char *argv[]) {
 

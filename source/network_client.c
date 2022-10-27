@@ -4,8 +4,8 @@
 #include "../include/client_stub.h"
 #include "../include/client_stub-private.h"
 #include"../include/message-private.h"
-
-#include "sdmessage.pb-c.h"
+#include"../include/network_client.h"
+#include "../sdmessage.pb-c.h"
 
 /* Esta função deve:
  * - Obter o enrdeeço do servidor (struct sockaddr_in) a base da

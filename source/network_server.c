@@ -2,8 +2,8 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include "../include/tree_skel.h"
-#include "sdmessage.pb-c.h"
 #include "../include/network_server.h"
+#include "../sdmessage.pb-c.h"
 
 int sockfd;
 struct sockaddr_in serverSocket;
